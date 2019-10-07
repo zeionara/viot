@@ -6,7 +6,7 @@ import os
 
 def build(opt):
     dpath = os.path.join(opt['datapath'], 'viot')
-    version = '1.2'
+    version = '1.3'
 
     if not build_data.built(dpath, version_string=version):
         print('[building data: ' + dpath + ']')

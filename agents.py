@@ -20,17 +20,11 @@ def _path(opt, dt=''):
         'data.txt',
     )
 
-
 class DefaultTeacher(ParlAIDialogTeacher):
     def __init__(self, opt, shared=None):
-        opt = copy.deepcopy(opt)
-        data_path = _path(opt)
-        opt['datafile'] = data_path
-        self.id = 'viot'
-        print("Content of datafile:")
-        with open(opt["datafile"], "r") as file:
-            print(file.read())
         super().__init__(opt, shared)
+        opt = copy.deepcopy(opt)
 
-    def setup_data(self, path):
-        return setup_data(path)
+        opt['datafile'] = _path(opt, '')
+        if shared is None:
+             self._setup_data(opt['datafile'])
